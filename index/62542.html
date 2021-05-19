@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#9abeaf">
+  <meta name="description" content="心弦：未雨初晴-个人博客">
+  <meta name="author" content="wish_dq">
+  <meta name="keywords" content="未雨初晴,weiyuchuqing,心弦：未雨初晴,wish_dq">
+  
+  <title>通过FTP实现github Action - 心弦：未雨初晴</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wishdq.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"3e881619f0e60cf4967e37f23116b5a0","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"OgglnihGBz95Xc3IHd53TXqs-gzGzoHsz","app_key":"J4SuUyhl3QolIVu5guzny3g6","server_url":"https://ogglnihg.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>心弦：未雨初晴</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-wenzhang-copy"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/index.html">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/index.html">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/index.html">
+                    <i class="iconfont icon-tag-fill"></i>
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-codeforces"></i>
+                工具
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/start/#%E4%B8%BB%E9%A2%98%E7%AE%80%E4%BB%8B">
+                    <i class="iconfont icon-daohang"></i>
+                    开始使用
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/navigate/index.html">
+                    <i class="iconfont icon-daohang"></i>
+                    导航
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/">
+                    <i class="iconfont icon-yinyong"></i>
+                    诗文
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://wishdq.github.io/img/">
+                    <i class="iconfont icon-image"></i>
+                    图片
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="通过FTP实现github Action">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-19 11:56" pubdate>
+        2021年4月19日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      847 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">通过FTP实现github Action</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年4月19日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>通过FTP实现github Action</p>
+<h3 id="Usage-Example"><a href="#Usage-Example" class="headerlink" title="Usage Example"></a>Usage Example</h3><p>Place the following in <code>/.github/workflows/main.yml</code></p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions&#x2F;checkout@v2.3.2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland&#x2F;FTP-Deploy-Action@4.0.0
+      with:
+        server: ftp.samkirkland.com
+        username: myFtpUserName
+        password: $&#123;&#123; secrets.ftp_password &#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<hr>
+<h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h3><ul>
+<li>You must have ftp access to your server. If your host requires ssh please use my web-deploy action (coming soon)</li>
+<li>Some web hosts change the default port (21), check with your host for your port number</li>
+</ul>
+<h3 id="Setup-Steps"><a href="#Setup-Steps" class="headerlink" title="Setup Steps"></a>Setup Steps</h3><ol>
+<li>Select the repository you want to add the action to</li>
+<li>Select the <code>Actions</code> tab</li>
+<li>Select <code>Blank workflow file</code> or <code>Set up a workflow yourself</code>, if you don’t see these options manually create a yaml file <code>Your_Project/.github/workflows/main.yml</code></li>
+<li>Paste the example above into your yaml file and save</li>
+<li>Now you need to add a key to the <code>secrets</code> section in your project. To add a <code>secret</code> go to the <code>Settings</code> tab in your project then select <code>Secrets</code>. Add a new <code>Secret</code> for <code>password</code></li>
+<li>Update your yaml file settings</li>
+<li>If you appreciate this github action give it a ⭐ or show off with one of the <a target="_blank" rel="noopener" href="https://github.com/SamKirkland/FTP-Deploy-Action#badge">badges below</a>.</li>
+</ol>
+<hr>
+<h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><p>Keys can be added directly to your .yml config file or referenced from your project <code>Secrets</code> storage.</p>
+<p>To add a <code>secret</code> go to the <code>Settings</code> tab in your project then select <code>Secrets</code>. I strongly recommend you store your <code>password</code> as a secret.</p>
+<table>
+<thead>
+<tr>
+<th>Key Name</th>
+<th>Required</th>
+<th>Example</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>server</code></td>
+<td>Yes</td>
+<td><code>ftp.samkirkland.com</code></td>
+<td></td>
+<td>Deployment destination server</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>Yes</td>
+<td><code>username@samkirkland.com</code></td>
+<td></td>
+<td>FTP user name</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Yes</td>
+<td><code>CrazyUniquePassword&amp;%123</code></td>
+<td></td>
+<td>FTP password, be sure to escape quotes and spaces</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>No</td>
+<td><code>990</code></td>
+<td><code>21</code></td>
+<td>Server port to connect to (read your web hosts docs)</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>No</td>
+<td><code>ftps</code></td>
+<td><code>ftp</code></td>
+<td><code>ftp</code>: provides no encryption, <code>ftps</code>: full encryption newest standard (aka “explicit” ftps), <code>ftps-legacy</code>: full encryption legacy standard (aka “implicit” ftps)</td>
+</tr>
+<tr>
+<td><code>local-dir</code></td>
+<td>No</td>
+<td><code>./myFolderToPublish/</code></td>
+<td><code>./</code></td>
+<td>Folder to upload from, must end with trailing slash <code>/</code></td>
+</tr>
+<tr>
+<td><code>server-dir</code></td>
+<td>No</td>
+<td><code>public_html/www/</code></td>
+<td><code>./</code></td>
+<td>Folder to upload to (on the server), must end with trailing slash <code>/</code></td>
+</tr>
+<tr>
+<td><code>state-name</code></td>
+<td>No</td>
+<td><code>folder/.sync-state.json</code></td>
+<td><code>.ftp-deploy-sync-state.json</code></td>
+<td>Path and name of the state file - this file is used to track which files have been deployed</td>
+</tr>
+<tr>
+<td><code>dry-run</code></td>
+<td>No</td>
+<td><code>true</code></td>
+<td><code>false</code></td>
+<td>Prints which modifications will be made with current config options, but doesn’t actually make any changes</td>
+</tr>
+<tr>
+<td><code>dangerous-clean-slate</code></td>
+<td>No</td>
+<td><code>true</code></td>
+<td><code>false</code></td>
+<td>Deletes ALL contents of server-dir, even items in excluded with ‘exclude’ argument</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td>No</td>
+<td></td>
+<td><code>.git*</code> <code>.git*/**``node_modules/**``node_modules/**/*</code></td>
+<td>An array of glob patterns, these files will not be included in the publish/delete process. <a target="_blank" rel="noopener" href="https://github.com/SamKirkland/FTP-Deploy-Action#exclude-files">List must be in yaml array format</a></td>
+</tr>
+<tr>
+<td><code>log-level</code></td>
+<td>No</td>
+<td><code>minimal</code></td>
+<td><code>standard</code></td>
+<td><code>minimal</code>: only important info, <code>standard</code>: important info and basic file changes, <code>verbose</code>: print everything the script is doing</td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td>No</td>
+<td><code>strict</code></td>
+<td><code>loose</code></td>
+<td><code>strict</code>: Reject any connection which is not authorized with the list of supplied CAs. <code>loose</code>: Allow connection even when the domain is not certificate</td>
+</tr>
+</tbody></table>
+<h1 id="Common-Examples"><a href="#Common-Examples" class="headerlink" title="Common Examples"></a>Common Examples</h1><h4 id="Build-and-Publish-React-Angular-Vue-Website"><a href="#Build-and-Publish-React-Angular-Vue-Website" class="headerlink" title="Build and Publish React/Angular/Vue Website"></a>Build and Publish React/Angular/Vue Website</h4><p>Make sure you have an npm script named ‘build’. This config should work for most node built websites.</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions&#x2F;checkout@v2.3.2
+
+    - name: Use Node.js 12
+      uses: actions&#x2F;setup-node@v2-beta
+      with:
+        node-version: &#39;12&#39;
+      
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm run build
+    
+    - name: 📂 Sync files
+      uses: SamKirkland&#x2F;FTP-Deploy-Action@4.0.0
+      with:
+        server: ftp.samkirkland.com
+        username: myFtpUserName
+        password: $&#123;&#123; secrets.password &#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h4 id="FTPS"><a href="#FTPS" class="headerlink" title="FTPS"></a>FTPS</h4><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions&#x2F;checkout@v2.3.2
+
+    - name: 📂 Sync files
+      uses: SamKirkland&#x2F;FTP-Deploy-Action@4.0.0
+      with:
+        server: ftp.samkirkland.com
+        username: myFtpUserName
+        password: $&#123;&#123; secrets.password &#125;&#125;
+        protocol: ftps
+        port: 1234 # todo replace with your web hosts ftps port<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h4 id="Log-only-dry-run-Use-this-mode-for-testing"><a href="#Log-only-dry-run-Use-this-mode-for-testing" class="headerlink" title="Log only dry run: Use this mode for testing"></a>Log only dry run: Use this mode for testing</h4><p>Ouputs a list of files that will be created/modified to sync your source without making any actual changes</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions&#x2F;checkout@v2.3.2
+
+    - name: 📂 Sync files
+      uses: SamKirkland&#x2F;FTP-Deploy-Action@4.0.0
+      with:
+        server: ftp.samkirkland.com
+        username: myFtpUserName
+        password: $&#123;&#123; secrets.password &#125;&#125;
+        dry-run: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h4 id="Exclude-files"><a href="#Exclude-files" class="headerlink" title="Exclude files"></a>Exclude files</h4><p>Excludes files</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions&#x2F;checkout@v2.3.2
+
+    - name: 📂 Sync files
+      uses: SamKirkland&#x2F;FTP-Deploy-Action@4.0.0
+      with:
+        server: ftp.samkirkland.com
+        username: myFtpUserName
+        password: $&#123;&#123; secrets.password &#125;&#125;
+        exclude: .git*
+          - .git*&#x2F;**
+          -  **&#x2F;.git*&#x2F;**
+          - node_modules&#x2F;**
+          - node_modules&#x2F;**&#x2F;*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/SamKirkland/FTP-Deploy-Action#build-and-publish-reactangularvue-website/">官方GitHub连接</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/github/">github</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/github/">github</a>
+                    
+                      <a class="hover-with-bg" href="/tags/github-Action/">github Action</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/index/18195.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">butterfly</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/index/63534.html">
+                        <span class="hidden-mobile">网页加密</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "OgglnihGBz95Xc3IHd53TXqs-gzGzoHsz",
+          app_key: "J4SuUyhl3QolIVu5guzny3g6",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "https://ogglnihg.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">请输入关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span  rel="nofollow noopener">Copyright © 2021 <a href="/">未雨初晴</a></span> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo  Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://www.ideal-20.cn/libs/others/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3e881619f0e60cf4967e37f23116b5a0";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+<script src="/js/duration.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 雪花特效 -->
+  <script type="text/javascript" src="\js\snow.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

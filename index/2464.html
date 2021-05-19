@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#9abeaf">
+  <meta name="description" content="1 前言本文将介绍利用Hexo+gitee搭建个人博客。
+原理是将markdown文件生成静态页面,发布到gitee上,利用git page服务提供静态页面访问。
+这样的话不需要花费一分钱即可搭建一个自己的博客。
+我是博客地址：https://heliufang.gitee.io">
+  <meta name="author" content="wish_dq">
+  <meta name="keywords" content="未雨初晴,weiyuchuqing,心弦：未雨初晴,wish_dq">
+  
+  <title>利用Hexo+gitee搭建个人博客 - 心弦：未雨初晴</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wishdq.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"3e881619f0e60cf4967e37f23116b5a0","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"OgglnihGBz95Xc3IHd53TXqs-gzGzoHsz","app_key":"J4SuUyhl3QolIVu5guzny3g6","server_url":"https://ogglnihg.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>心弦：未雨初晴</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-wenzhang-copy"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/index.html">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/index.html">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/index.html">
+                    <i class="iconfont icon-tag-fill"></i>
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-codeforces"></i>
+                工具
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/start/#%E4%B8%BB%E9%A2%98%E7%AE%80%E4%BB%8B">
+                    <i class="iconfont icon-daohang"></i>
+                    开始使用
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/navigate/index.html">
+                    <i class="iconfont icon-daohang"></i>
+                    导航
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/">
+                    <i class="iconfont icon-yinyong"></i>
+                    诗文
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://wishdq.github.io/img/">
+                    <i class="iconfont icon-image"></i>
+                    图片
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="利用Hexo+gitee搭建个人博客">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-24 17:55" pubdate>
+        2020年12月24日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">利用Hexo+gitee搭建个人博客</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年4月17日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>本文将介绍利用Hexo+gitee搭建个人博客。</p>
+<p>原理是将markdown文件生成静态页面,发布到gitee上,利用git page服务提供静态页面访问。</p>
+<p>这样的话不需要花费一分钱即可搭建一个自己的博客。</p>
+<p>我是博客地址：<a target="_blank" rel="noopener" href="https://heliufang.gitee.io/">https://heliufang.gitee.io</a></p>
+<span id="more"></span>
+
+<h2 id="2-环境"><a href="#2-环境" class="headerlink" title="2 环境"></a>2 环境</h2><p>node.js:因为Hexo是基于node的</p>
+<p>git：主要用来推送静态页面</p>
+<p>Hexo：将markdown文件转化成静态页面</p>
+<h3 id="2-1-node安装"><a href="#2-1-node安装" class="headerlink" title="2.1 node安装"></a>2.1 node安装</h3><p>略。网上有很多，安装也很简单</p>
+<p>可以参考菜鸟教程:<a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-install-setup.html">https://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
+<h3 id="2-2-git安装"><a href="#2-2-git安装" class="headerlink" title="2.2 git安装"></a>2.2 git安装</h3><p>略。win、mac各个平台有不同的软件，我是win平台所以用的是Git-2.13.0-64-bit.exe</p>
+<p>参考菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-install-setup.html">https://www.runoob.com/git/git-install-setup.html</a></p>
+<h3 id="2-3-Hexo安装"><a href="#2-3-Hexo安装" class="headerlink" title="2.3 Hexo安装"></a>2.3 Hexo安装</h3><ul>
+<li>全局安装Hexo</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">js
+
+npm install  hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>在win磁盘上建立一个文件夹,并进入这个文件夹，在这个文件夹中右键-git bash here，调出git窗口</li>
+<li>在黑窗口中运行命令,等待hexo初始化完成</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">js
+
+hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>初始化完成后下载依赖</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">plain
+
+npm install
+npm install --save hexo-renderer-pug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h4 id="2-3-1-测试"><a href="#2-3-1-测试" class="headerlink" title="2.3.1 测试"></a>2.3.1 测试</h4><ul>
+<li>清除生成的静态文件,以后每次发布博客都要执行此操作</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">plain
+
+hexo clean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>重新生成静态文件</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">plain
+
+hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>启动hexo服务,这样在浏览器中访问localhost:4000就可以看到默认的博客了</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">plain
+
+hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<p>说明：hexo安装完成后默认会在 \source_posts\中生成hello-world.md文章,启动后默认就是看到这个。</p>
+<h2 id="3-Hexo配置"><a href="#3-Hexo配置" class="headerlink" title="3 Hexo配置"></a>3 Hexo配置</h2><p>根目录下的<code>_config.yml</code>为全局配置文件，相关的配置可以参考官网：</p>
+<h3 id="3-1-网站配置"><a href="#3-1-网站配置" class="headerlink" title="3.1 网站配置"></a>3.1 网站配置</h3><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">yml
+
+title: 贺刘芳的网络日志 #网站大标题
+subtitle: &#39;每天多学一点知识,就少写一行代码&#39; #网站子标题
+description: &#39;贺刘芳的网络日志&#39;    #这个是seo搜索引擎用的,很重要
+keywords:
+author: 贺刘芳
+language: zh-CN   #网站语言 zh-CN为中文
+timezone: &#39;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h3 id="3-2-主题配置"><a href="#3-2-主题配置" class="headerlink" title="3.2 主题配置"></a>3.2 主题配置</h3><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">yml
+
+#theme: landscape #默认是 landscape 主题，个人觉得不好看
+theme: hexo-theme-stun #我使用的是stun这个主题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p>注意：这里这个名字如：<code>hexo-theme-stun</code> 要和<code>/themes/</code>下的主题文件夹的名称对应</p>
+<p><img src="https://heliufang.gitee.io/2020/12/24/%E5%88%A9%E7%94%A8Hexo-gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/images/image-20201224201840273.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="3-3-写作图片配置"><a href="#3-3-写作图片配置" class="headerlink" title="3.3 写作图片配置"></a>3.3 写作图片配置</h3><ul>
+<li>安装图片插件</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">plain
+
+npm install hexo-asset-image --save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>修改<code>_config.yml</code></li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">yml
+
+post_asset_folder: true # 将这个改为true默认是false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>打开<code>/node_modules/hexo-asset-image/index.js</code> 修改内容如下</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">js
+
+&#39;use strict&#39;;
+var cheerio &#x3D; require(&#39;cheerio&#39;);
+
+&#x2F;&#x2F; http:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;14480345&#x2F;how-to-get-the-nth-occurrence-in-a-string
+function getPosition(str, m, i) &#123;
+  return str.split(m, i).join(m).length;
+&#125;
+
+var version &#x3D; String(hexo.version).split(&#39;.&#39;);
+hexo.extend.filter.register(&#39;after_post_render&#39;, function(data)&#123;
+  var config &#x3D; hexo.config;
+  if(config.post_asset_folder)&#123;
+        var link &#x3D; data.permalink;
+    if(version.length &gt; 0 &amp;&amp; Number(version[0]) &#x3D;&#x3D; 3)
+       var beginPos &#x3D; getPosition(link, &#39;&#x2F;&#39;, 1) + 1;
+    else
+       var beginPos &#x3D; getPosition(link, &#39;&#x2F;&#39;, 3) + 1;
+    &#x2F;&#x2F; In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;...&#x2F;about&#x2F;index.html&quot;.
+    var endPos &#x3D; link.lastIndexOf(&#39;&#x2F;&#39;) + 1;
+    link &#x3D; link.substring(beginPos, endPos);
+
+    var toprocess &#x3D; [&#39;excerpt&#39;, &#39;more&#39;, &#39;content&#39;];
+    for(var i &#x3D; 0; i &lt; toprocess.length; i++)&#123;
+      var key &#x3D; toprocess[i];
+ 
+      var $ &#x3D; cheerio.load(data[key], &#123;
+        ignoreWhitespace: false,
+        xmlMode: false,
+        lowerCaseTags: false,
+        decodeEntities: false
+      &#125;);
+
+      $(&#39;img&#39;).each(function()&#123;
+        if ($(this).attr(&#39;src&#39;))&#123;
+            &#x2F;&#x2F; For windows style path, we replace &#39;\&#39; to &#39;&#x2F;&#39;.
+            var src &#x3D; $(this).attr(&#39;src&#39;).replace(&#39;\\&#39;, &#39;&#x2F;&#39;);
+            if(!&#x2F;http[s]*.*|\&#x2F;\&#x2F;.*&#x2F;.test(src) &amp;&amp;
+               !&#x2F;^\s*\&#x2F;&#x2F;.test(src)) &#123;
+              &#x2F;&#x2F; For &quot;about&quot; page, the first part of &quot;src&quot; can&#39;t be removed.
+              &#x2F;&#x2F; In addition, to support multi-level local directory.
+              var linkArray &#x3D; link.split(&#39;&#x2F;&#39;).filter(function(elem)&#123;
+                return elem !&#x3D; &#39;&#39;;
+              &#125;);
+              var srcArray &#x3D; src.split(&#39;&#x2F;&#39;).filter(function(elem)&#123;
+                return elem !&#x3D; &#39;&#39; &amp;&amp; elem !&#x3D; &#39;.&#39;;
+              &#125;);
+              if(srcArray.length &gt; 1)
+                srcArray.shift();
+              src &#x3D; srcArray.join(&#39;&#x2F;&#39;);
+              $(this).attr(&#39;src&#39;, config.root + link + src);
+              console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);
+            &#125;
+        &#125;else&#123;
+            console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);
+            console.info&amp;&amp;console.info($(this));
+        &#125;
+      &#125;);
+      data[key] &#x3D; $.html();
+    &#125;
+  &#125;
+&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p>然后就可以插入图片了。</p>
+<p>注意：博客文件也就是md文件放在<code>/source/_posts</code>下</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">plain
+
+md文件名要和图片文件夹的名称一样而且是同级。
+md文件引用图片：如![](hello-world&#x2F;1.png)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p><img src="https://heliufang.gitee.io/2020/12/24/%E5%88%A9%E7%94%A8Hexo-gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/images/image-20201224195315188.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="4-git配置和推送"><a href="#4-git配置和推送" class="headerlink" title="4 git配置和推送"></a>4 git配置和推送</h2><ul>
+<li>首先得申请gitee一个账号</li>
+<li>然后新增一个空仓库heliufang,并把仓库的设为<code>公开</code></li>
+<li>开启git page服务</li>
+</ul>
+<p><img src="https://heliufang.gitee.io/2020/12/24/%E5%88%A9%E7%94%A8Hexo-gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/images/image-20201224190704824.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>安装hexo安装git依赖,不按照此依赖hexo没法推送静态页面到gitee</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">plain
+
+npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>修改根目录下的<code>_config.yml</code>全局配置文件中的<code>url</code></li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">yml
+
+# URL
+## If your site is put in a subdirectory, set url as &#39;http:&#x2F;&#x2F;example.com&#x2F;child&#39; and root as &#39;&#x2F;child&#x2F;&#39;
+url:  https:&#x2F;&#x2F;heliufang.gitee.io #注意：这里为启动git page服务后分配的地址
+root: &#x2F;
+permalink: :year&#x2F;:month&#x2F;:day&#x2F;:title&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>修改根目录下的<code>_config.yml</code>全局配置文件中的<code>deploy</code>,配置仓库地址和分支</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">yml
+
+# Deployment
+## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;one-command-deployment
+deploy:
+  type: git #这里为git
+  repo: https:&#x2F;&#x2F;gitee.com&#x2F;heliufang&#x2F;heliufang.git #仓库的地址,注意属性名称是repo不是repository
+  branch: master # 主分支<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p>注意：网络上很多文档写的仓库地址的属性名repository,可能是以前的hexo版本配置。这里被坑到了，导致总是推送不上去。然后去看官方文档才知道仓库地址的属性名称是<code>repo</code> ╮(╯▽╰)╭</p>
+<ul>
+<li>hexo推送到gitee</li>
+</ul>
+<p>先重新生成静态页面</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">js
+
+hexo clean
+hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p>推送,输入下面的命名,然后会让你输入gitee的账号密码，完之后不出意外就推送上去了。</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">js
+
+hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<p>注意：推送上去之后访问地址为：启动git page服务后分配的地址,比如我的<a target="_blank" rel="noopener" href="https://heliufang.gitee.io/">https://heliufang.gitee.io</a></p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">plain
+
+推送后要到gitee的git page页面点击更新按钮,不然看不到最新的页面！！！
+推送后要到gitee的git page页面点击更新按钮,不然看不到最新的页面！！！
+推送后要到gitee的git page页面点击更新按钮,不然看不到最新的页面！！！
+重要的事情说三遍。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h2 id="5-主题配置"><a href="#5-主题配置" class="headerlink" title="5 主题配置"></a>5 主题配置</h2><p>默认的主题不是特别美观，可以去官网选择合适的主题，然后下载到本地。</p>
+<p>主题官网地址：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
+<p>主题中文官网: <a target="_blank" rel="noopener" href="https://hexo.bootcss.com/">https://hexo.bootcss.com/</a></p>
+<p>我用的是这个主题（stun）：<a target="_blank" rel="noopener" href="https://github.com/liuyib/hexo-theme-stun/">https://github.com/liuyib/hexo-theme-stun/</a></p>
+<p>stun主题文档：<a target="_blank" rel="noopener" href="https://theme-stun.github.io/docs/zh-CN/guide/primary.html#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">https://theme-stun.github.io/docs/zh-CN/guide/primary.html#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6</a></p>
+<p>未完…待有时间再完善这一块</p>
+<h2 id="6-写作"><a href="#6-写作" class="headerlink" title="6 写作"></a>6 写作</h2><ul>
+<li>可以将写好的md文件放入/source/_post/下</li>
+<li>也可以通过命令创建。这样就会在/source/_post/下创建md文件以及同名的文件夹</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">yml
+
+hexo new &#39;文章名称&#39; #注意这里不要加后缀<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<ul>
+<li>在md文件的头部加上文章的标题、标签、分类、时间，这样发布后就有相关的信息</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">yml
+
+---
+title: 利用Hexo+gitee搭建个人博客
+tags:
+  - 标签1
+  - 标签2
+category:
+  - 分类生活
+date: 2020-12-24 17:55:19
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h2 id="7-参考文献"><a href="#7-参考文献" class="headerlink" title="7 参考文献"></a>7 参考文献</h2><p>使用Hexo+服务器搭建个人博客： <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6ae883f9291c">https://www.jianshu.com/p/6ae883f9291c</a></p>
+<p>基于Gitee+Hexo搭建个人博客： <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018662692">https://segmentfault.com/a/1190000018662692</a></p>
+<p>HEXO插入图片（详细版）： <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f72aaad7b852">https://www.jianshu.com/p/f72aaad7b852</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%87%E7%AD%BE1/">标签1</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%87%E7%AD%BE2/">标签2</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/index/12507.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">码云[gitee]&pages服务</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "OgglnihGBz95Xc3IHd53TXqs-gzGzoHsz",
+          app_key: "J4SuUyhl3QolIVu5guzny3g6",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "https://ogglnihg.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">请输入关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span  rel="nofollow noopener">Copyright © 2021 <a href="/">未雨初晴</a></span> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo  Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://www.ideal-20.cn/libs/others/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3e881619f0e60cf4967e37f23116b5a0";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+<script src="/js/duration.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 雪花特效 -->
+  <script type="text/javascript" src="\js\snow.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

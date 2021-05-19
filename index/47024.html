@@ -1,0 +1,899 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#9abeaf">
+  <meta name="description" content="心弦：未雨初晴-个人博客">
+  <meta name="author" content="wish_dq">
+  <meta name="keywords" content="未雨初晴,weiyuchuqing,心弦：未雨初晴,wish_dq">
+  
+  <title>github使用教程 - 心弦：未雨初晴</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wishdq.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"3e881619f0e60cf4967e37f23116b5a0","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"OgglnihGBz95Xc3IHd53TXqs-gzGzoHsz","app_key":"J4SuUyhl3QolIVu5guzny3g6","server_url":"https://ogglnihg.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>心弦：未雨初晴</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-wenzhang-copy"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/index.html">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/index.html">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/index.html">
+                    <i class="iconfont icon-tag-fill"></i>
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-codeforces"></i>
+                工具
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/start/#%E4%B8%BB%E9%A2%98%E7%AE%80%E4%BB%8B">
+                    <i class="iconfont icon-daohang"></i>
+                    开始使用
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/navigate/index.html">
+                    <i class="iconfont icon-daohang"></i>
+                    导航
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/">
+                    <i class="iconfont icon-yinyong"></i>
+                    诗文
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://wishdq.github.io/img/">
+                    <i class="iconfont icon-image"></i>
+                    图片
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="github使用教程">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-18 15:09" pubdate>
+        2021年4月18日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      52
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">github使用教程</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年4月23日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="GitHub使用"><a href="#GitHub使用" class="headerlink" title="GitHub使用"></a>GitHub使用</h1><blockquote>
+<div class="code-wrapper"><pre><code>            SVN是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就纳闷了。
+           
+    　　Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了
+</code></pre></div>
+</blockquote>
+<h2 id="1-初次运行-Git-前的配置"><a href="#1-初次运行-Git-前的配置" class="headerlink" title="1.初次运行 Git 前的配置"></a>1.初次运行 Git 前的配置</h2><p>既然已经在系统上安装了 Git，你会想要做几件事来定制你的 Git 环境。 每台计算机上只需要配置一次，程序升<br>级时会保留配置信息。 你可以在任何时候再次通过运行命令来修改它们。<br>Git 自带一个 <strong>git config</strong> 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位<br>置：</p>
+<ol>
+<li>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果在执行 git config 时带上</li>
+</ol>
+<p>–system 选项，那么它就会读写该文件中的配置变量。 （由于它是系统配置文件，因此你需要管理员或<br>超级用户权限来修改它。）<br>2. ~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 你可以传递 –global 选项让 Git<br>读写此文件，这会对你系统上 所有 的仓库生效。<br>3. 当前使用仓库的 Git 目录中的 config 文件（即 .git/config）：针对该仓库。 你可以传递 –local 选<br>项让 Git 强制读写此文件，虽然默认情况下用的就是它。。 （当然，你需要进入某个 Git 仓库中才能让该选<br>项生效。）<br>每一个级别会覆盖上一级别的配置，所以 .git/config 的配置变量会覆盖 /etc/gitconfig 中的配置变量。<br>在 Windows 系统中，Git 会查找 $HOME 目录下（一般情况下是 C:\Users$USER ）的 .gitconfig 文件。<br>Git 同样也会寻找 /etc/gitconfig 文件，但只限于 MSys 的根目录下，即安装 Git 时所选的目标位置。 如果<br>你在 Windows 上使用 Git 2.x 以后的版本，那么还有一个系统级的配置文件，Windows XP 上在<br>C:\Documents and Settings\All Users\Application Data\Git\config ，Windows Vista 及更新<br>的版本在 C:\ProgramData\Git\config 。此文件只能以管理员权限通过 git config -f <file> 来修<br>改</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">git config --list --show-origin			查看所有的配置以及它们所在的文件：<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<h3 id="1-1用户信息"><a href="#1-1用户信息" class="headerlink" title="1.1用户信息"></a>1.1用户信息</h3><p>你这台机器上所有的Git仓库都会使用这个配置，当然你也可以对某个仓库指定的不同的用户名和邮箱。</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">git config  --global user.name &quot;yonghuming&quot;
+git config  --global user.email &quot;1234@qq.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+
+<h3 id="命令："><a href="#命令：" class="headerlink" title="命令："></a>命令：</h3><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">pwd 	命令是用于显示当前的目录。
+
+git init 	把这个目录变成git可以管理的仓库，这时test目录下会多了一个.git的目录
+
+ls -a		找到目录下隐藏的 .git
+
+rm -rf .git 	删除 .git
+
+git add readme.txt	指定添加到暂存区里面去.
+
+git add .		将修改的文件添加的暂存区
+
+git commit -m &#39;本次提交备注&#39;      告诉Git，把文件提交到仓库。(此目录下的所有文件)
+
+git status	来查看是否还有文件未提交。
+
+git diff readme.txt  看下readme.txt文件到底改了什么内容。知道了对readme.txt文件做了什么修改后，我们可以放心的提交到仓库了，提交修改和提交文件是一样的2步(第一步是git add  第二步是：git commit)
+
+
+版本回退:
+git log 	查看对readme.txt文件做的修改历史记录
+ 
+git log --all --graph --decorate   可视化历史记录（有向无环图）
+
+git long --pretty&#x3D;oneline	省略显示修改记录
+
+git reset  --hard HEAD^		回退到上一个版本，回退上上个版本：HEAD^^ ,以此类推。
+
+git reset  --hard HEAD~100   回退前100个版本
+
+cat readme.txt		查看下 readme.txt内容
+
+git reset  --hard 版本号 回退到最新的版本
+
+git reflog		显示每次提交的版本号
+
+git checkout -- XX  把XX文件在工作区的修改全部撤销。
+
+git rm XX          删除XX文件
+
+git remote add origin https:&#x2F;&#x2F;github.com&#x2F;tugenhua0707&#x2F;testgit 关联一个远程库
+
+git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h3 id="理解工作区与暂存区的区别："><a href="#理解工作区与暂存区的区别：" class="headerlink" title="理解工作区与暂存区的区别："></a>理解工作区与暂存区的区别：</h3><blockquote>
+<div class="code-wrapper"><pre><code>            工作区：就是你在电脑上看到的目录，比如目录下testgit里的文件(.git隐藏目录版本库除外)。或者以后需要再新建的目录文件等等都属于工作区范畴。
+           
+    　　版本库(Repository)：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库。其中版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD。
+</code></pre></div>
+</blockquote>
+<p>我们前面说过使用Git提交文件到版本库有两步：</p>
+<p>　　第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。</p>
+<p>　　第二步：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上。</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">在新修改的文件后，还未add到暂存区时，可以直接回退到上一个版本，
+git checkout  -- filename 可以丢弃工作区的修改
+注意：命令git checkout -- readme.txt 中的 -- 很重要，如果没有 -- 的话，那么命令变成创建分支了。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<p>删除文件：</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">rm b.txt     直接在文件目录中把文件删了，如果我想彻底从版本库中删掉了此文件的话，可以再执行commit命令。
+git checkout  -- b.txt 只要没有commit之前，都可以在版本库中恢复此文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+
+<h2 id="远程仓库："><a href="#远程仓库：" class="headerlink" title="远程仓库："></a>远程仓库：</h2><h3 id="创建秘钥"><a href="#创建秘钥" class="headerlink" title="创建秘钥"></a>创建秘钥</h3><div class="code-wrapper"><pre><code>    创建SSH Key，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+</code></pre></div>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjMzNTUzMjIuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload></p>
+<div class="code-wrapper"><pre><code>    我们已经在本地创建了一个Git仓库后，又想在github创建一个Git仓库，并且希望这两个仓库进行远程同步，这样github的仓库可以作为备份，又可以其他人通过该仓库来协作.
+
+    测试：为了确认我们可以通过SSH连接GitHub，我们输入下面命令。输入后，会要求我们提供验证密码，输入之前创建的密码就ok了。
+</code></pre></div>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p><strong>出现fatal错误：</strong></p>
+<p><img src="https://ae01.alicdn.com/kf/Uebb1bb40803f49f1b1381cb536056df3G.jpg" srcset="/img/loading.gif" lazyload></p>
+<div class="code-wrapper"><pre><code>    意思是证书位置出现错误。
+</code></pre></div>
+<p>解决方法：</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">方法一：
+	执行命令,关闭证书校验：git config --system http.sslverify false 
+方法二：
+	更新git配置文件中证书存放位置信息：
+git config --system http.sslcainfo &quot;..(Git的安装目录下的)&#x2F;mingw64&#x2F;ssl&#x2F;certs&#x2F;ca-bundle.crt&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h3 id="查看远程厂库："><a href="#查看远程厂库：" class="headerlink" title="查看远程厂库："></a>查看远程厂库：</h3><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ git clone https:&#x2F;&#x2F;github.com&#x2F;schacon&#x2F;ticgit
+Cloning into &#39;ticgit&#39;...
+remote: Reusing existing pack: 1857, done.
+remote: Total 1857 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (1857&#x2F;1857), 374.35 KiB | 268.00 KiB&#x2F;s, done.
+Resolving deltas: 100% (772&#x2F;772), done.
+Checking connectivity... done.
+$ cd ticgit
+$ git remote    Git查看远程仓库名称
+origin
+
+指定选项 -v，会显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。
+$ git remote -v
+origin	https:&#x2F;&#x2F;github.com&#x2F;schacon&#x2F;ticgit (fetch)
+origin	https:&#x2F;&#x2F;github.com&#x2F;schacon&#x2F;ticgit (push)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+
+
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">添加远程创库关联
+git remote add &lt;shortname&gt; &lt;url&gt;   shortname：可以在命令行中使用字符串 pb 来代替整个 URL
+
+删除远程关联
+git remote remove &lt;url&gt;
+
+更换远程关联 url
+git remote set-url origin &lt;new url&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p><strong>从远程仓库中抓取与拉取：</strong></p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ git fetch &lt;remote&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<div class="code-wrapper"><pre><code>    这个命令会**访问远程并拉取所有你还没有的数据**。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。
+
+    如果你使用 `clone` 命令克隆了一个仓库，命令会**自动将其添加为远程仓库并默认以 “origin” 为简写**。 所以，`git fetch origin` 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 `git fetch` 命令只会将数据下载到你的本地仓库——它并**不会自动合并或修改你当前的工作**。 当准备好时你必须手动将其合并入你的工作。
+</code></pre></div>
+<p><strong>推送到远程仓库：</strong></p>
+<p><code>git push &lt;remote&gt; &lt;branch&gt;</code>。 当你想要将 <code>master</code> 分支推送到 <code>origin</code> 服务器时（再次说明，克隆时通常会自动帮你设置好那两个名字）， 那么运行这个命令就可以将你所做的<strong>备份到服务器</strong>：</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ git push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，这条命令才能生效。 当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。</p>
+<p><strong>查看某个远程仓库</strong></p>
+<p>如果想要查看某一个远程仓库的更多信息，可以使用 <code>git remote show &lt;remote&gt;</code> 命令。 如果想以一个特定的缩写名运行这个命令，例如 <code>origin</code>，会得到像下面类似的信息：</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ git remote show origin
+* remote origin
+  Fetch URL: https:&#x2F;&#x2F;github.com&#x2F;schacon&#x2F;ticgit
+  Push  URL: https:&#x2F;&#x2F;github.com&#x2F;schacon&#x2F;ticgit
+  HEAD branch: master
+  Remote branches:
+    master                               tracked
+    dev-branch                           tracked
+  Local branch configured for &#39;git pull&#39;:
+    master merges with remote master
+  Local ref configured for &#39;git push&#39;:
+    master pushes to master (up to date)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p>它同样会列出远程仓库的 URL 与跟踪分支的信息。 这些信息非常有用，它告诉你正处于 <code>master</code> 分支，并且如果运行 <code>git pull</code>， 就会抓取所有的远程引用，然后将远程 <code>master</code> 分支合并到本地 <code>master</code> 分支。 它也会列出拉取到的所有远程引用。</p>
+<p><strong>远程仓库的重命名与移除</strong></p>
+<p>你可以运行 <code>git remote rename</code> 来修改一个远程仓库的简写名。 例如，想要将 <code>pb</code> 重命名为 <code>paul</code>，可以用 <code>git remote rename</code> 这样做：</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ git remote rename pb paul   本地git命名修改，默认为origin
+$ git remote
+origin
+paul<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<p>值得注意的是这同样也会修改你所有远程跟踪的分支名字。 那些过去引用 <code>pb/master</code> 的现在会引用 <code>paul/master</code>。</p>
+<p>如果因为一些原因想要移除一个远程仓库——你已经从服务器上搬走了或不再想使用某一个特定的镜像了， 又或者某一个贡献者不再贡献了——可以使用 <code>git remote remove</code> 或 <code>git remote rm</code> ：</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ git remote remove paul
+$ git remote
+origin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<p>一旦你使用这种方式删除了一个远程仓库，那么所有和这个远程仓库相关的远程跟踪分支以及配置信息也会一起被删除。</p>
+<p><strong>创建与合并与删除分支</strong></p>
+<blockquote>
+<div class="code-wrapper"><pre><code>            在版本回填退里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。
+</code></pre></div>
+</blockquote>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">git branch 		查看当前分支
+
+git checkout -b dev		dev		创建并切换到dev分支
+相当于 git branch dev 创建分支    git checkout dev   切换分支
+
+git checkout  dev 		切换分支
+
+git merge name		合并某分支到当前分支
+
+git branch –d name     删除分支<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<div class="code-wrapper"><pre><code>    我们可以把dev分支上的内容合并到分支master,可以**在master分支**上，使用如下命令 `git merge dev`
+</code></pre></div>
+<p>合并完成后，我们可以接着<strong>删除dev</strong>分支了，操作如下，<code>git branch –d name</code></p>
+<div class="code-wrapper"><pre><code>    注意到上面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。
+</code></pre></div>
+<p>分支冲突：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjMzMzk2ODYuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjMxOTM0NjMuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="!%5Bimg%5D(https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjM5MjQ5NTMuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload></p>
+<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，其中&lt;&lt;&lt;HEAD是指主分支修改的内容，&gt;&gt;&gt;&gt;&gt;fenzhi1 是指fenzhi1上修改的内容，我们可以修改下如下后保存：</p>
+<p><strong>分支管理策略：</strong></p>
+<p>　　通常合并分支时，git一般使用”Fast forward”模式，在这种模式下，删除分支后，会丢掉分支信息，现在我们来使用带参数 –no-ff来禁用”Fast forward”模式。首先我们来做demo演示下：</p>
+<ol>
+<li>创建一个dev分支。</li>
+<li>修改readme.txt内容。</li>
+<li>添加到暂存区。</li>
+<li>切换回主分支(master)。</li>
+<li>合并dev分支，使用命令 git merge –no-ff -m “注释” dev</li>
+<li>查看历史记录</li>
+</ol>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjM3MTYzNjQuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload></p>
+<div class="code-wrapper"><pre><code>    分支策略：首先master主分支应该是非常稳定的，也就是用来发布新版本，一般情况下不允许在上面干活，干活一般情况下在新建的dev分支上干活，干完后，比如上要发布，或者说dev分支代码稳定后可以合并到主分支master上来。
+</code></pre></div>
+<p><strong>bug分支：</strong></p>
+<p>　　在开发中，会经常碰到bug问题，那么有了bug就需要修复，在Git中，分支是很强大的，每个bug都可以通过一个临时分支来修复，修复完成后，合并分支，然后将临时的分支删除掉。</p>
+<p>　　比如我在开发中接到一个404 bug时候，我们可以创建一个404分支来修复它，但是，当前的dev分支上的工作还没有提交。比如如下：</p>
+<p> <img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjM1OTA0NjcuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　并不是我不想提交，而是工作进行到一半时候，我们还无法提交，比如我这个分支bug要2天完成，但是我issue-404 bug需要5个小时内完成。怎么办呢？还好，Git还提供了一个stash功能，可以把当前工作现场 ”隐藏起来”，等以后恢复现场后继续工作。如下：</p>
+<p> <img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjM5MDQ5NzYuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　所以现在我可以通过创建issue-404分支来修复bug了。</p>
+<p>　　首先我们要确定在那个分支上修复bug，比如我现在是在主分支master上来修复的，现在我要在master分支上创建一个临时分支，演示如下：</p>
+<p> <img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjM5NzE0OTkuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　修复完成后，切换到master分支上，并完成合并，最后删除issue-404分支。演示如下：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjMwMzM2NzEuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　现在，我们回到dev分支上干活了。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjM1MjE0NzkuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　工作区是干净的，那么我们工作现场去哪里呢？我们可以使用命令 git stash list来查看下。如下：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjM2NDAwOTEuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，可以使用如下2个方法：</p>
+<ol>
+<li>git stash apply恢复，恢复后，stash内容并不删除，你需要使用命令git stash drop来删除。</li>
+<li>另一种方式是使用git stash pop,恢复的同时把stash内容也删除了。</li>
+</ol>
+<p>　　演示如下</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5hZG1pbjEwMDAwLmNvbS9VcGxvYWRGaWxlcy9Eb2N1bWVudC8yMDE0MTAvMjcvMjAxNDEwMjcxNTUzMjMyNzc5MjcuUE5H?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>多人协作。</strong></p>
+<p>　　当你从远程库克隆时候，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且远程库的默认名称是origin。</p>
+<ol>
+<li>要查看远程库的信息 使用 <strong>git remote</strong></li>
+<li>要查看远程库的详细信息 使用 <strong>git remote –v</strong></li>
+</ol>
+<p>推送分支命令<code>git push origin master</code>。如果在github的remote上已经有了文件，会出现错误。此时应当先pull一下<code>git pull origin master</code>，再<code>push</code>一下</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>git push时每次需要输入用户名和密码方法：</p>
+<div class="code-wrapper"><pre><code>    交互环境输入命令,在项目目录下打开：git bash
+</code></pre></div>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">git config  credential.helper store<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<div class="code-wrapper"><pre><code>    这里没有–global意思是指只对这个仓库生效，建议以后都不要加–global，让代码配置以仓库为单位存储就好，设置成全局不灵活。输入用户名密码后，再次运行git push 就不用输入用户名和密码了，因为在用户主目录文件夹多了一个文件git-credentials，这个就是用来存储用户名和密码的。
+</code></pre></div>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">git credential-manager uninstall			删除项目用户名密码<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+
+
+<h3 id="git-解决每次需要用户名和密码"><a href="#git-解决每次需要用户名和密码" class="headerlink" title="git 解决每次需要用户名和密码"></a>git 解决每次需要用户名和密码</h3><div class="code-wrapper"><pre><code>    首先，如果我们git clone的下载代码的时候是连接的https://而不是git@git (ssh)的形式，当我们操作git pull/push到远程的时候，总是提示我们输入账号和密码才能操作成功，频繁的输入账号和密码会很麻烦，也特别烦恼。
+</code></pre></div>
+<p>解决办法：</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">git bash进入你的项目目录，输入：
+
+git config --global credential.helper store<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<p>然后你会在你本地生成一个文本，上边记录你的账号和密码。当然这些你可以不用关心。然后你使用上述的命令配置好之后，再操作一次git pull，然后它会提示你输入账号密码，这一次之后就不需要再次输入密码了。</p>
+<h3 id="git-只提交部分文件到远程仓库"><a href="#git-只提交部分文件到远程仓库" class="headerlink" title="git 只提交部分文件到远程仓库"></a>git 只提交部分文件到远程仓库</h3><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">git add demo.html &#x2F;&#x2F; 提交到暂存区
+git stash -u -k  &#x2F;&#x2F; 忽略其他修改，关键一步
+git commit -m &#39;修改演示文件&#39; &#x2F;&#x2F; 提交暂存区
+git pull &#x2F;&#x2F; 拉取合并
+git push origin master &#x2F;&#x2F; 推到远程仓库
+git stash pop &#x2F;&#x2F; 恢复之前忽略的文件（非常重要的一步）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/">个人笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/github/">github</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/index/63534.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">网页加密</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/index/1441.html">
+                        <span class="hidden-mobile">page</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "OgglnihGBz95Xc3IHd53TXqs-gzGzoHsz",
+          app_key: "J4SuUyhl3QolIVu5guzny3g6",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "https://ogglnihg.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">请输入关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span  rel="nofollow noopener">Copyright © 2021 <a href="/">未雨初晴</a></span> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo  Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://www.ideal-20.cn/libs/others/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3e881619f0e60cf4967e37f23116b5a0";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+<script src="/js/duration.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 雪花特效 -->
+  <script type="text/javascript" src="\js\snow.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
