@@ -9,8 +9,8 @@ function getApi(){
     .catch(console.error)
 }
 
-var getApi = new getApi();
-getApi.start();
+//var getApi = new getApi();
+getApi();
 // <script>
 //
 // </script>
