@@ -133,7 +133,10 @@
 }
 
 #subtitle {
-    background: linear-gradient(-45deg, #314747, #58ce3e, #23a6d5, #10e5b3);
+    background: linear-gradient(-45deg,
+    #8cc269, #12a182, #23a6d5,
+    #10e5b3, #ee9292, #a4b54c,
+    #b65fcd, #2775b6, #f8df70);
     background-size: 400% 400%;
     -webkit-animation: Gradient 10s ease infinite;
     -moz-animation: Gradient 10s ease infinite;
